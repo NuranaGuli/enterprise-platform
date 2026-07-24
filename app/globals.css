@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --gk-void: #09090f;
+  --gk-surface: #111118;
+  --gk-panel: #1a1a26;
+  --gk-border: #2a2a3d;
+  --gk-ink: #e8e8f0;
+  --gk-muted: #6b6b8a;
+  --gk-accent: #7c3aed;
+  --gk-accent-glow: #9f67ff;
+  --gk-accent-dim: #3b1f73;
+  --gk-green: #22c55e;
+  --gk-amber: #f59e0b;
+  --gk-red: #ef4444;
+}
+
+@theme inline {
+  --color-background: var(--gk-void);
+  --color-foreground: var(--gk-ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gk-void);
+  color: var(--gk-ink);
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+}
+
+.gk-hero-gradient {
+  background: linear-gradient(135deg, #1a0a2e 0%, #0d0d1a 50%, #0a1628 100%);
+}
+
+.gk-card {
+  background: var(--gk-panel);
+  border: 1px solid var(--gk-border);
+  border-radius: 14px;
+  transition: border-color 0.2s;
+}
+
+.gk-card:hover {
+  border-color: var(--gk-accent-dim);
+}
+
+.gk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.gk-btn-primary {
+  background: var(--gk-accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.gk-btn-primary:hover {
+  background: var(--gk-accent-glow);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.5);
+}

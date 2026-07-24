@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Player {
+  id                String   @id @default(uuid())
+  playerEmail       String   @unique
+  hashedSecurityKey String
+  accountTier       String   @default("player")
+  orders            PurchaseOrder[]
+
+  @@map("players")
+}
+
+model GameProduct {
+  id            String   @id @default(uuid())
+  title         String
+  retailPrice   Float
+  availableKeys Int
+  genre         String
+  platform      String
+  ageRating     String
+  publisher     String
+  orders        PurchaseOrder[]
+
+  @@map("game_products")
+}
+
+model PurchaseOrder {
+  id            String      @id @default(uuid())
+  gameId        String
+  unitCount     Int
+  deliveryState String
+  customerId    String
+  grandTotal    Float
+
+  game          GameProduct @relation(fields: [gameId], references: [id])
+  customer      Player      @relation(fields: [customerId], references: [id])
+
+  @@map("purchase_orders")
+}
