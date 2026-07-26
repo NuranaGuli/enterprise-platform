@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    typedRoutes: false,
-  },
-
+  typedRoutes: false,
+  
   async headers() {
     return [
       {
